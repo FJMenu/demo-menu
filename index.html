@@ -12,11 +12,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://i.postimg.cc" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="manifest" href="/demo-menu/manifest.webmanifest">
   <meta name="theme-color" content="#0F0F0F">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="La Bonne Fourchette">
-  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="apple-touch-icon" href="/demo-menu/icon-192.png">
 
   <script>
     tailwind.config = {
@@ -862,15 +862,15 @@
             </a>
           </div>
 
-          <div class="mt-4">
-            <button id="install-app-btn" hidden onclick="handleInstallClick()" class="btn-action group flex items-center justify-center gap-3 w-full px-6 py-3.5 rounded-xl bg-gradient-to-br from-gold/15 to-gold/5 border-2 border-gold/50 hover:border-gold hover:from-gold/25 hover:to-gold/10 transition-all shadow-lg hover:shadow-xl hover:shadow-gold/20">
-              <i data-lucide="download" class="w-5 h-5 text-gold group-hover:scale-110 transition-transform"></i>
-              <span class="text-sm font-semibold text-cream tracking-wide">Enregistrer sur le téléphone</span>
+          <div class="mt-4 flex justify-center">
+            <button id="install-app-btn" hidden onclick="handleInstallClick()" class="btn-action group flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-darkCard/90 border border-gold/25 text-cream/85 hover:border-gold/45 hover:bg-darkCard transition-all shadow-sm">
+              <i data-lucide="download" class="w-4 h-4 text-gold group-hover:scale-110 transition-transform"></i>
+              <span class="text-xs font-medium tracking-wide">Ajouter au téléphone</span>
             </button>
+          </div>
 
-            <div id="ios-install-help" hidden class="mt-3 p-4 rounded-lg bg-darkCard border border-gold/20 text-sm text-cream/80">
-              Sur iPhone : appuyez sur <strong>Partager</strong>, puis <strong>Sur l’écran d’accueil</strong>.
-            </div>
+          <div id="ios-install-help" hidden class="mt-3 p-4 rounded-lg bg-darkCard border border-gold/20 text-sm text-cream/80">
+            Sur iPhone : appuyez sur <strong>Partager</strong>, puis <strong>Sur l’écran d’accueil</strong>.
           </div>
         </section>
 
@@ -997,7 +997,7 @@
       renderMenu();
 
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js');
+        navigator.serviceWorker.register('/demo-menu/sw.js');
       }
 
       const detectedLangBtn = document.querySelector(`[data-lang="${currentLang}"]`);
