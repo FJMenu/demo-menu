@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Bonne Fourchette</title>
+
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+<script src="/_sdk/element_sdk.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+gold: '#F2C744',
+goldDark: '#D4A820',
+dark: '#0F0F0F',
+darkCard: '#1A1A1A',
+cream: '#FAF6EE',
+belgianRed: '#EF3340'
+}
+}
+}
+}
+</script>
+
+<style>
+html,body{
+margin:0;
+padding:0;
+width:100%;
+min-height:100%;
+background:#0F0F0F;
+overflow-x:hidden;
+}
+
+body{
+box-sizing:border-box;
+min-height:100vh;
+overflow-y:auto;
+-webkit-overflow-scrolling:touch;
+}
+
+*{box-sizing:border-box;}
+
+.font-display{font-family:'Playfair Display',Georgia,serif;}
+.font-body{font-family:'DM Sans','Helvetica Neue',sans-serif;}
+
+.language-selector{
+position:fixed;
+top:16px;
+right:20px;
+display:flex;
+gap:8px;
+z-index:50;
+background:rgba(26,26,26,0.85);
+backdrop-filter:blur(6px);
+padding:10px 12px;
+border-radius:10px;
+border:1px solid rgba(242,199,68,0.25);
+}
+
+.lang-btn{
+width:44px;
+height:44px;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+border:2px solid transparent;
+border-radius:7px;
+background:transparent;
+font-size:24px;
+}
+
+.lang-btn.active{
+border-color:#F2C744;
+background:rgba(242,199,68,.18);
+}
+</style>
+</head>
+
+<body class="font-body">
+
+<div class="language-selector">
+<button class="lang-btn active">🇫🇷</button>
+<button class="lang-btn">🇪🇸</button>
+<button class="lang-btn">🇬🇧</button>
+<button class="lang-btn">🇳🇱</button>
+</div>
+
+<div class="w-full min-h-screen bg-dark text-cream">
+
+<header class="pt-16 pb-12 px-4 text-center">
+<div class="mx-auto w-full max-w-4xl flex items-center justify-center">
+<img src="https://i.postimg.cc/bN0b11bS/logo-sans-fond.png"
+alt="La Bonne Fourchette"
+class="w-full h-auto max-w-3xl"
+style="max-height:500px;">
+</div>
+</header>
+
+<section class="px-6 py-6 flex justify-center gap-4 flex-wrap">
+
+<a href="tel:0034672486699"
+class="flex items-center gap-3 px-6 py-3 rounded-xl border-2 border-gold text-gold">
+<i data-lucide="phone" class="w-5 h-5"></i>
+<span>Appeler</span>
+</a>
+
+<a href="https://wa.me/34672486699"
+target="_blank"
+class="flex items-center gap-3 px-6 py-3 rounded-xl border-2 border-gold text-gold">
+<i data-lucide="message-circle" class="w-5 h-5"></i>
+<span>WhatsApp</span>
+</a>
+
+<a href="https://maps.app.goo.gl/w1YhWUqoJ6qp8KDF9"
+target="_blank"
+class="flex items-center gap-3 px-6 py-3 rounded-xl border-2 border-gold text-gold">
+<i data-lucide="map-pin" class="w-5 h-5"></i>
+<span>Itinéraire</span>
+</a>
+
+</section>
+
+<section class="px-6 pb-8">
+
+<div class="flex items-start gap-3 p-4 rounded-lg bg-darkCard border border-gold/20 mb-4">
+<i data-lucide="star" class="w-5 h-5 text-gold flex-shrink-0 mt-0.5"></i>
+<p class="text-sm text-cream/80">
+⭐ <strong>Vous avez apprécié votre expérience ?</strong><br>
+Si vous avez aimé votre expérience, un avis Google nous aide énormément. Merci ❤️
+</p>
+</div>
+
+<a href="https://www.google.com/maps/place/Cabinet+Dentaire+Oksuz/@50.6742662,5.6307637,17z/data=!4m8!3m7!1s0x47c0fb3618a9b3dd:0x619a36695c6765b3!8m2!3d50.6742662!4d5.6333386!9m1!1b1"
+target="_blank"
+class="flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-gold text-black font-semibold shadow-lg hover:bg-goldDark transition">
+
+<i data-lucide="star" class="w-5 h-5"></i>
+<span>Laisser un avis Google</span>
+
+</a>
+
+</section>
+
+<footer class="px-6 pt-6 pb-10 text-center">
+
+<div class="mb-6">
+<h4 class="text-gold text-sm uppercase">Adresse</h4>
+<p class="text-sm text-cream/60">
+Rue de la Croix Jurlet 291<br>
+4040 Herstal
+</p>
+</div>
+
+<p class="text-xs text-cream/30">
+© 2026 La Bonne Fourchette
+</p>
+
+</footer>
+
+</div>
+
+<script>
+lucide.createIcons();
+</script>
+
+</body>
+</html>
