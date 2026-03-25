@@ -1,18 +1,19 @@
 {
   "name": "La Bonne Fourchette",
   "short_name": "Bonne Fourchette",
-  "start_url": "/",
+  "start_url": "/demo-menu/",
+  "scope": "/demo-menu/",
   "display": "standalone",
   "background_color": "#0F0F0F",
   "theme_color": "#0F0F0F",
   "icons": [
     {
-      "src": "/icon-192.png",
+      "src": "/demo-menu/icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/icon-512.png",
+      "src": "/demo-menu/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
