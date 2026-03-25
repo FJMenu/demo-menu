@@ -1,10 +1,10 @@
 {
   "name": "La Bonne Fourchette",
   "short_name": "Bonne Fourchette",
-  "start_url": "./",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "display_override": ["standalone"],
+  "orientation": "portrait",
   "background_color": "#0F0F0F",
   "theme_color": "#0F0F0F",
   "description": "Menu digital du restaurant La Bonne Fourchette",
