@@ -213,7 +213,10 @@
 
   <script>
     const siteConfig = {
-      logoUrl: "https://i.postimg.cc/bN0b11bS/logo-sans-fond.png"
+      logoUrl: "https://i.postimg.cc/bN0b11bS/logo-sans-fond.png",
+      brandLogoUrl: "https://i.postimg.cc/sX7n1G14/Chat-GPT-Image-14-fevr-2026-15-23-38.png",
+      productName: "TapCarta",
+      productSignature: "Created by FJ"
     };
 
     const menuData = {
@@ -987,7 +990,31 @@
               <div class="w-8 h-0.5 rounded-full" style="background:#EF3340;"></div>
             </div>
 
-            <p class="text-xs text-cream/30 mt-2">${t.copyright}</p>
+            <div class="pt-5 flex justify-center">
+              <div class="flex items-center gap-3 px-4 py-3 rounded-full bg-darkCard/80 border border-gold/20 shadow-md backdrop-blur">
+                <div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-gold/20">
+                  <img
+                    src="${siteConfig.brandLogoUrl}"
+                    alt="FJ"
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                </div>
+
+                <div class="leading-tight text-left">
+                  <div class="text-sm font-semibold text-cream tracking-wide">
+                    ${siteConfig.productName}
+                  </div>
+
+                  <div class="text-xs text-cream/50">
+                    ${siteConfig.productSignature}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-xs text-cream/30 mt-4">${t.copyright}</p>
           </div>
         </footer>
       `;
