@@ -1,7 +1,7 @@
 {
   "name": "La Bonne Fourchette",
   "short_name": "Bonne Fourchette",
-  "start_url": "./index.html",
+  "start_url": "./index.html?v=1.1.1",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
