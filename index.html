@@ -214,7 +214,7 @@
   <script>
     const siteConfig = {
       logoUrl: "https://i.postimg.cc/bN0b11bS/logo-sans-fond.png",
-      brandLogoUrl: "https://i.postimg.cc/sX7n1G14/Chat-GPT-Image-14-fevr-2026-15-23-38.png",
+      brandLogoUrl: "https://i.postimg.cc/sX7n1G14/Chat-GPT-Image-14-fevr-2026-15-23-38.png?v=4",
       productName: "TapCarta",
       productSignature: "Created by FJ"
     };
@@ -999,6 +999,9 @@
                     class="w-full h-full object-contain"
                     loading="lazy"
                     decoding="async"
+                    referrerpolicy="no-referrer"
+                    crossorigin="anonymous"
+                    onerror="this.style.display='none';"
                   >
                 </div>
 
@@ -1032,7 +1035,13 @@
       renderMenu();
 
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/demo-menu/sw.js');
+        navigator.serviceWorker.getRegistrations().then((registrations) => {
+          registrations.forEach((registration) => registration.update());
+        });
+
+        navigator.serviceWorker.register('/demo-menu/sw.js?v=4').then((registration) => {
+          registration.update();
+        });
       }
 
       const detectedLangBtn = document.querySelector(`[data-lang="${currentLang}"]`);
