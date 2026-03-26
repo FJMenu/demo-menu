@@ -313,6 +313,8 @@
         reviewCtaTitle: 'Vous avez apprécié votre expérience ?',
         reviewCtaText: 'Un avis Google nous aide énormément. Merci ❤️',
         reviewButton: 'Laisser un avis Google',
+        installApp: 'Ajouter au téléphone',
+        iosInstallHelp: 'Sur iPhone : appuyez sur <strong>Partager</strong>, puis <strong>Sur l’écran d’accueil</strong>.',
         allergens: ['Gluten', 'Crustacés', 'Œufs', 'Poisson', 'Lait / lactose', 'Fruits à coque', 'Céleri', 'Moutarde', 'Sésame', 'Sulfites', 'Mollusques'],
         items: {
           ailes_poulet: { name: 'Ailes de poulet', subtitle: 'croustillantes et moelleuses' },
@@ -394,6 +396,8 @@
         reviewCtaTitle: '¿Ha disfrutado de su experiencia?',
         reviewCtaText: 'Una reseña en Google nos ayuda muchísimo. Gracias ❤️',
         reviewButton: 'Dejar una reseña en Google',
+        installApp: 'Añadir al teléfono',
+        iosInstallHelp: 'En iPhone: pulse <strong>Compartir</strong> y luego <strong>Añadir a la pantalla de inicio</strong>.',
         allergens: ['Gluten', 'Crustáceos', 'Huevos', 'Pescado', 'Leche / lactosa', 'Frutos secos', 'Apio', 'Mostaza', 'Sésamo', 'Sulfitos', 'Moluscos'],
         items: {
           ailes_poulet: { name: 'Alitas de pollo', subtitle: 'crujientes y tiernas' },
@@ -475,6 +479,8 @@
         reviewCtaTitle: 'Did you enjoy your experience?',
         reviewCtaText: 'A Google review helps us tremendously. Thank you ❤️',
         reviewButton: 'Leave a Google review',
+        installApp: 'Add to Home Screen',
+        iosInstallHelp: 'On iPhone: tap <strong>Share</strong>, then <strong>Add to Home Screen</strong>.',
         allergens: ['Gluten', 'Crustaceans', 'Eggs', 'Fish', 'Milk / lactose', 'Nuts', 'Celery', 'Mustard', 'Sesame', 'Sulfites', 'Molluscs'],
         items: {
           ailes_poulet: { name: 'Chicken wings', subtitle: 'crispy and tender' },
@@ -556,6 +562,8 @@
         reviewCtaTitle: 'Hebt u genoten van uw ervaring?',
         reviewCtaText: 'Een Google-review helpt ons enorm. Dank u ❤️',
         reviewButton: 'Laat een Google-review achter',
+        installApp: 'Toevoegen aan beginscherm',
+        iosInstallHelp: 'Op iPhone: tik op <strong>Deel</strong> en daarna op <strong>Zet op beginscherm</strong>.',
         allergens: ['Gluten', 'Schaaldieren', 'Eieren', 'Vis', 'Melk / lactose', 'Noten', 'Selderij', 'Mosterd', 'Sesam', 'Sulfieten', 'Weekdieren'],
         items: {
           ailes_poulet: { name: 'Kipvleugels', subtitle: 'knapperig en mals' },
@@ -865,12 +873,12 @@
           <div class="mt-4 flex justify-center">
             <button id="install-app-btn" hidden onclick="handleInstallClick()" class="btn-action group flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-darkCard/90 border border-gold/25 text-cream/85 hover:border-gold/45 hover:bg-darkCard transition-all shadow-sm">
               <i data-lucide="download" class="w-4 h-4 text-gold group-hover:scale-110 transition-transform"></i>
-              <span class="text-xs font-medium tracking-wide">Ajouter au téléphone</span>
+              <span class="text-xs font-medium tracking-wide">${t.installApp}</span>
             </button>
           </div>
 
           <div id="ios-install-help" hidden class="mt-3 p-4 rounded-lg bg-darkCard border border-gold/20 text-sm text-cream/80">
-            Sur iPhone : appuyez sur <strong>Partager</strong>, puis <strong>Sur l’écran d’accueil</strong>.
+            ${t.iosInstallHelp}
           </div>
         </section>
 
