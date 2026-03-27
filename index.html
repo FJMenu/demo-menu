@@ -1185,27 +1185,6 @@
       }
     }
 
-    function checkInstalledAndShowToast() {
-      if (isInStandaloneMode()) {
-        showInstallToast();
-        updateInstallUI();
-      }
-    }
-
-    window.addEventListener('pageshow', () => {
-      setTimeout(checkInstalledAndShowToast, 500);
-    });
-
-    document.addEventListener('visibilitychange', () => {
-      if (!document.hidden) {
-        setTimeout(checkInstalledAndShowToast, 500);
-      }
-    });
-
-    window.addEventListener('focus', () => {
-      setTimeout(checkInstalledAndShowToast, 500);
-    });
-
     document.addEventListener('DOMContentLoaded', async () => {
       renderMenu();
 
