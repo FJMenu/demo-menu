@@ -270,6 +270,66 @@
       transform: translate(-50%, 0);
     }
 
+    .install-help-box {
+      margin-top: 8px;
+      padding: 18px 18px 16px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      border: 2px solid rgba(242, 199, 68, 0.28);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+    }
+
+    .install-help-title {
+      font-size: 1.2rem;
+      line-height: 1.3;
+      font-weight: 800;
+      color: #FAF6EE;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .install-help-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 1.02rem;
+      line-height: 1.45;
+      color: rgba(250, 246, 238, 0.92);
+    }
+
+    .install-help-step strong {
+      color: #F2C744;
+      font-weight: 800;
+    }
+
+    .install-help-num {
+      width: 30px;
+      height: 30px;
+      flex-shrink: 0;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(242, 199, 68, 0.16);
+      border: 1px solid rgba(242, 199, 68, 0.38);
+      color: #F2C744;
+      font-weight: 800;
+      font-size: 0.98rem;
+      margin-top: 1px;
+    }
+
+    .install-help-note {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(242, 199, 68, 0.18);
+      font-size: 1rem;
+      line-height: 1.45;
+      color: rgba(250, 246, 238, 0.88);
+      text-align: center;
+      font-weight: 600;
+    }
+
     @media (max-width: 640px) {
       .language-selector {
         top: 10px;
@@ -295,6 +355,23 @@
 
       .brand-card {
         max-width: 100%;
+      }
+
+      .install-help-box {
+        padding: 18px 16px 16px;
+        border-radius: 16px;
+      }
+
+      .install-help-title {
+        font-size: 1.24rem;
+      }
+
+      .install-help-step {
+        font-size: 1.06rem;
+      }
+
+      .install-help-note {
+        font-size: 1.02rem;
       }
     }
   </style>
@@ -448,9 +525,9 @@
         reviewCtaTitle: 'Vous avez apprécié votre expérience ?',
         reviewCtaText: 'Un avis Google nous aide énormément. Merci ❤️',
         reviewButton: 'Laisser un avis Google',
-        installApp: 'Ajouter au téléphone',
+        installApp: 'Installer le menu',
         iosInstallHelp: 'Sur iPhone : appuyez sur <strong>Partager</strong>, puis <strong>Sur l’écran d’accueil</strong>.',
-        samsungInstallHelp: 'Sur Samsung Internet : appuyez sur <strong>⋮</strong>, puis <strong>Ajouter la page à</strong>, puis <strong>Écran d’accueil</strong>.',
+        samsungInstallHelp: '<div class="install-help-box"><div class="install-help-title">Installer le menu sur votre téléphone</div><div class="install-help-step"><span class="install-help-num">1</span><span>Appuyez sur <strong>☰ les 3 lignes en bas à droite</strong></span></div><div class="install-help-step"><span class="install-help-num">2</span><span>Appuyez sur <strong>+ Ajouter à</strong></span></div><div class="install-help-step"><span class="install-help-num">3</span><span>Appuyez sur <strong>Écran d’accueil</strong></span></div><div class="install-help-note">Le menu apparaîtra ensuite comme une application sur votre téléphone.</div></div>',
         installToastTitle: 'Menu ajouté au téléphone',
         installToastText: 'Retrouvez-le dans vos applications.',
         versionLabel: 'Version',
@@ -535,9 +612,9 @@
         reviewCtaTitle: '¿Ha disfrutado de su experiencia?',
         reviewCtaText: 'Una reseña en Google nos ayuda muchísimo. Gracias ❤️',
         reviewButton: 'Dejar una reseña en Google',
-        installApp: 'Añadir al teléfono',
+        installApp: 'Instalar el menú',
         iosInstallHelp: 'En iPhone: pulse <strong>Compartir</strong> y luego <strong>Añadir a la pantalla de inicio</strong>.',
-        samsungInstallHelp: 'En Samsung Internet: pulse <strong>⋮</strong>, luego <strong>Añadir página a</strong> y después <strong>Pantalla de inicio</strong>.',
+        samsungInstallHelp: '<div class="install-help-box"><div class="install-help-title">Instalar el menú en su teléfono</div><div class="install-help-step"><span class="install-help-num">1</span><span>Pulse <strong>☰ las 3 líneas abajo a la derecha</strong></span></div><div class="install-help-step"><span class="install-help-num">2</span><span>Pulse <strong>+ Añadir a</strong></span></div><div class="install-help-step"><span class="install-help-num">3</span><span>Pulse <strong>Pantalla de inicio</strong></span></div><div class="install-help-note">Después, el menú aparecerá como una aplicación en su teléfono.</div></div>',
         installToastTitle: 'Menú añadido al teléfono',
         installToastText: 'Ya puede encontrarlo en sus aplicaciones.',
         versionLabel: 'Versión',
@@ -622,9 +699,9 @@
         reviewCtaTitle: 'Did you enjoy your experience?',
         reviewCtaText: 'A Google review helps us tremendously. Thank you ❤️',
         reviewButton: 'Leave a Google review',
-        installApp: 'Add to phone',
+        installApp: 'Install the menu',
         iosInstallHelp: 'On iPhone: tap <strong>Share</strong>, then <strong>Add to Home Screen</strong>.',
-        samsungInstallHelp: 'On Samsung Internet: tap <strong>⋮</strong>, then <strong>Add page to</strong>, then <strong>Home screen</strong>.',
+        samsungInstallHelp: '<div class="install-help-box"><div class="install-help-title">Install the menu on your phone</div><div class="install-help-step"><span class="install-help-num">1</span><span>Tap <strong>☰ the 3 lines at the bottom right</strong></span></div><div class="install-help-step"><span class="install-help-num">2</span><span>Tap <strong>+ Add to</strong></span></div><div class="install-help-step"><span class="install-help-num">3</span><span>Tap <strong>Home screen</strong></span></div><div class="install-help-note">The menu will then appear like an app on your phone.</div></div>',
         installToastTitle: 'Menu added to your phone',
         installToastText: 'You can now find it in your apps.',
         versionLabel: 'Version',
@@ -709,9 +786,9 @@
         reviewCtaTitle: 'Hebt u genoten van uw ervaring?',
         reviewCtaText: 'Een Google-review helpt ons enorm. Dank u ❤️',
         reviewButton: 'Laat een Google-review achter',
-        installApp: 'Toevoegen aan telefoon',
+        installApp: 'Menu installeren',
         iosInstallHelp: 'Op iPhone: tik op <strong>Deel</strong> en daarna op <strong>Zet op beginscherm</strong>.',
-        samsungInstallHelp: 'Op Samsung Internet: tik op <strong>⋮</strong>, daarna op <strong>Pagina toevoegen aan</strong> en vervolgens <strong>Startscherm</strong>.',
+        samsungInstallHelp: '<div class="install-help-box"><div class="install-help-title">Installeer het menu op uw telefoon</div><div class="install-help-step"><span class="install-help-num">1</span><span>Tik op <strong>☰ de 3 lijnen rechtsonder</strong></span></div><div class="install-help-step"><span class="install-help-num">2</span><span>Tik op <strong>+ Toevoegen aan</strong></span></div><div class="install-help-step"><span class="install-help-num">3</span><span>Tik op <strong>Startscherm</strong></span></div><div class="install-help-note">Daarna verschijnt het menu als een app op uw telefoon.</div></div>',
         installToastTitle: 'Menu toegevoegd aan uw telefoon',
         installToastText: 'U vindt het nu terug bij uw apps.',
         versionLabel: 'Versie',
@@ -807,8 +884,10 @@
 
       if (isSamsungInternet()) {
         installBtn.hidden = false;
+        installBtn.querySelector('span').textContent = t.installApp;
+
         if (iosHelp) {
-          iosHelp.hidden = true;
+          iosHelp.hidden = false;
           iosHelp.innerHTML = t.samsungInstallHelp;
         }
         return;
@@ -816,6 +895,7 @@
 
       if (deferredInstallPrompt || isIos()) {
         installBtn.hidden = false;
+        installBtn.querySelector('span').textContent = t.installApp;
       } else {
         installBtn.hidden = true;
       }
@@ -861,6 +941,7 @@
         if (iosHelp) {
           iosHelp.hidden = false;
           iosHelp.innerHTML = t.samsungInstallHelp;
+          iosHelp.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
         return;
       }
@@ -891,6 +972,7 @@
         if (iosHelp) {
           iosHelp.hidden = false;
           iosHelp.innerHTML = t.iosInstallHelp;
+          iosHelp.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       }
     }
