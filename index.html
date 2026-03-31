@@ -1372,23 +1372,9 @@
     }
 
     async function cleanupOldServiceWorkersAndCaches() {
-      try {
-        if ('serviceWorker' in navigator) {
-          const registrations = await navigator.serviceWorker.getRegistrations();
-          await Promise.all(
-            registrations.map(async (registration) => {
-              await registration.unregister();
-            })
-          );
-        }
-
-        if ('caches' in window) {
-          const cacheNames = await caches.keys();
-          await Promise.all(cacheNames.map((name) => caches.delete(name)));
-        }
-      } catch (err) {
-        console.error('Cleanup error:', err);
-      }
+      // Désactivé volontairement :
+      // on ne supprime plus les service workers et caches à chaque chargement,
+      // pour garder une installation PWA stable sur Chrome.
     }
 
     async function registerFreshServiceWorker() {
@@ -1408,7 +1394,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', async () => {
-      await cleanupOldServiceWorkersAndCaches();
       await registerFreshServiceWorker();
 
       renderMenu();
