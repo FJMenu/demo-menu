@@ -6,7 +6,7 @@
   <title>La Bonne Fourchette</title>
 
   <script>
-    const APP_VERSION = '1.1.3';
+    const APP_VERSION = '1.1.4-test';
 
     function getBasePath() {
       const path = window.location.pathname;
@@ -1224,25 +1224,25 @@
       updateLangButtons();
     }
 
-    async function registerFreshServiceWorker() {
-      if (!('serviceWorker' in navigator)) return;
-
+    async function unregisterAllServiceWorkersAndClearCaches() {
       try {
-        const currentRegistration = await navigator.serviceWorker.getRegistration(`${BASE_PATH}/`);
+        if ('serviceWorker' in navigator) {
+          const registrations = await navigator.serviceWorker.getRegistrations();
+          await Promise.all(registrations.map((registration) => registration.unregister()));
+        }
 
-        if (currentRegistration) {
-          await currentRegistration.update();
-        } else {
-          await navigator.serviceWorker.register(SW_URL, {
-            scope: `${BASE_PATH}/`
-          });
+        if ('caches' in window) {
+          const cacheNames = await caches.keys();
+          await Promise.all(cacheNames.map((cacheName) => caches.delete(cacheName)));
         }
       } catch (err) {
-        console.error('SW registration error:', err);
+        console.error('Cleanup error:', err);
       }
     }
 
     document.addEventListener('DOMContentLoaded', async () => {
+      await unregisterAllServiceWorkersAndClearCaches();
+
       renderMenu();
 
       document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -1256,7 +1256,8 @@
         });
       });
 
-      await registerFreshServiceWorker();
+      // TEST V1.1.4 : volontairement sans enregistrement de service worker
+      // pour diagnostiquer Samsung Internet sans cache PWA.
     });
   </script>
 </body>
