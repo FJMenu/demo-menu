@@ -850,6 +850,7 @@
     let installToastTimeout = null;
     let installFallbackTimeout = null;
     let installToastAlreadyShown = false;
+    let installHelpTimeout = null;
 
     function isIos() {
       return /iphone|ipad|ipod/i.test(window.navigator.userAgent);
@@ -887,7 +888,7 @@
         installBtn.querySelector('span').textContent = t.installApp;
 
         if (iosHelp) {
-          iosHelp.hidden = false;
+          iosHelp.hidden = true;
           iosHelp.innerHTML = t.samsungInstallHelp;
         }
         return;
@@ -939,9 +940,20 @@
 
       if (isSamsungInternet()) {
         if (iosHelp) {
+          if (!iosHelp.hidden) {
+            clearTimeout(installHelpTimeout);
+            iosHelp.hidden = true;
+            return;
+          }
+
+          clearTimeout(installHelpTimeout);
           iosHelp.hidden = false;
           iosHelp.innerHTML = t.samsungInstallHelp;
           iosHelp.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+          installHelpTimeout = setTimeout(() => {
+            iosHelp.hidden = true;
+          }, 15000);
         }
         return;
       }
@@ -970,9 +982,20 @@
 
       if (isIos() && !isInStandaloneMode()) {
         if (iosHelp) {
+          if (!iosHelp.hidden) {
+            clearTimeout(installHelpTimeout);
+            iosHelp.hidden = true;
+            return;
+          }
+
+          clearTimeout(installHelpTimeout);
           iosHelp.hidden = false;
           iosHelp.innerHTML = t.iosInstallHelp;
           iosHelp.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+          installHelpTimeout = setTimeout(() => {
+            iosHelp.hidden = true;
+          }, 15000);
         }
       }
     }
