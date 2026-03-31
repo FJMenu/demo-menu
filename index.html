@@ -6,7 +6,7 @@
   <title>La Bonne Fourchette</title>
 
   <script>
-    const APP_VERSION = '1.1.5';
+    const APP_VERSION = '1.1.6';
 
     function getBasePath() {
       const path = window.location.pathname;
@@ -14,9 +14,9 @@
     }
 
     const BASE_PATH = getBasePath();
-    const MANIFEST_URL = `${BASE_PATH}/manifest.webmanifest?v=${APP_VERSION}`;
-    const ICON_192_URL = `${BASE_PATH}/icon-192.png?v=${APP_VERSION}`;
-    const SW_URL = `${BASE_PATH}/sw.js?v=${APP_VERSION}`;
+    const MANIFEST_URL = `${BASE_PATH}/manifest.webmanifest`;
+    const ICON_192_URL = `${BASE_PATH}/icon-192.png`;
+    const SW_URL = `${BASE_PATH}/sw.js`;
   </script>
 
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
@@ -450,6 +450,7 @@
         reviewButton: 'Laisser un avis Google',
         installApp: 'Ajouter au téléphone',
         iosInstallHelp: 'Sur iPhone : appuyez sur <strong>Partager</strong>, puis <strong>Sur l’écran d’accueil</strong>.',
+        samsungInstallHelp: 'Sur Samsung Internet : appuyez sur <strong>⋮</strong>, puis <strong>Ajouter la page à</strong>, puis <strong>Écran d’accueil</strong>.',
         installToastTitle: 'Menu ajouté au téléphone',
         installToastText: 'Retrouvez-le dans vos applications.',
         versionLabel: 'Version',
@@ -536,6 +537,7 @@
         reviewButton: 'Dejar una reseña en Google',
         installApp: 'Añadir al teléfono',
         iosInstallHelp: 'En iPhone: pulse <strong>Compartir</strong> y luego <strong>Añadir a la pantalla de inicio</strong>.',
+        samsungInstallHelp: 'En Samsung Internet: pulse <strong>⋮</strong>, luego <strong>Añadir página a</strong> y después <strong>Pantalla de inicio</strong>.',
         installToastTitle: 'Menú añadido al teléfono',
         installToastText: 'Ya puede encontrarlo en sus aplicaciones.',
         versionLabel: 'Versión',
@@ -622,6 +624,7 @@
         reviewButton: 'Leave a Google review',
         installApp: 'Add to phone',
         iosInstallHelp: 'On iPhone: tap <strong>Share</strong>, then <strong>Add to Home Screen</strong>.',
+        samsungInstallHelp: 'On Samsung Internet: tap <strong>⋮</strong>, then <strong>Add page to</strong>, then <strong>Home screen</strong>.',
         installToastTitle: 'Menu added to your phone',
         installToastText: 'You can now find it in your apps.',
         versionLabel: 'Version',
@@ -708,6 +711,7 @@
         reviewButton: 'Laat een Google-review achter',
         installApp: 'Toevoegen aan telefoon',
         iosInstallHelp: 'Op iPhone: tik op <strong>Deel</strong> en daarna op <strong>Zet op beginscherm</strong>.',
+        samsungInstallHelp: 'Op Samsung Internet: tik op <strong>⋮</strong>, daarna op <strong>Pagina toevoegen aan</strong> en vervolgens <strong>Startscherm</strong>.',
         installToastTitle: 'Menu toegevoegd aan uw telefoon',
         installToastText: 'U vindt het nu terug bij uw apps.',
         versionLabel: 'Versie',
@@ -774,6 +778,10 @@
       return /iphone|ipad|ipod/i.test(window.navigator.userAgent);
     }
 
+    function isSamsungInternet() {
+      return /SamsungBrowser/i.test(window.navigator.userAgent || '');
+    }
+
     function isInStandaloneMode() {
       return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
     }
@@ -787,6 +795,7 @@
     function updateInstallUI() {
       const installBtn = document.getElementById('install-app-btn');
       const iosHelp = document.getElementById('ios-install-help');
+      const t = translations[currentLang];
 
       if (!installBtn) return;
 
@@ -796,10 +805,23 @@
         return;
       }
 
+      if (isSamsungInternet()) {
+        installBtn.hidden = false;
+        if (iosHelp) {
+          iosHelp.hidden = true;
+          iosHelp.innerHTML = t.samsungInstallHelp;
+        }
+        return;
+      }
+
       if (deferredInstallPrompt || isIos()) {
         installBtn.hidden = false;
       } else {
         installBtn.hidden = true;
+      }
+
+      if (iosHelp) {
+        iosHelp.hidden = true;
       }
     }
 
@@ -833,6 +855,15 @@
 
     async function handleInstallClick() {
       const iosHelp = document.getElementById('ios-install-help');
+      const t = translations[currentLang];
+
+      if (isSamsungInternet()) {
+        if (iosHelp) {
+          iosHelp.hidden = false;
+          iosHelp.innerHTML = t.samsungInstallHelp;
+        }
+        return;
+      }
 
       if (deferredInstallPrompt) {
         installToastAlreadyShown = false;
@@ -857,14 +888,20 @@
       }
 
       if (isIos() && !isInStandaloneMode()) {
-        if (iosHelp) iosHelp.hidden = false;
+        if (iosHelp) {
+          iosHelp.hidden = false;
+          iosHelp.innerHTML = t.iosInstallHelp;
+        }
       }
     }
 
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredInstallPrompt = e;
-      updateInstallUI();
+
+      if (!isSamsungInternet()) {
+        updateInstallUI();
+      }
     });
 
     window.addEventListener('appinstalled', () => {
@@ -1208,10 +1245,15 @@
 
       const toastTitle = document.getElementById('install-toast-title');
       const toastText = document.getElementById('install-toast-text');
+      const iosHelp = document.getElementById('ios-install-help');
 
       if (toastTitle && toastText) {
         toastTitle.textContent = t.installToastTitle;
         toastText.textContent = t.installToastText;
+      }
+
+      if (iosHelp) {
+        iosHelp.innerHTML = isSamsungInternet() ? t.samsungInstallHelp : t.iosInstallHelp;
       }
 
       if (window.lucide) {
@@ -1228,26 +1270,16 @@
       try {
         if ('serviceWorker' in navigator) {
           const registrations = await navigator.serviceWorker.getRegistrations();
-
           await Promise.all(
             registrations.map(async (registration) => {
-              const scriptURL = registration.active?.scriptURL || registration.waiting?.scriptURL || registration.installing?.scriptURL || '';
-
-              if (scriptURL.includes('/sw.js')) {
-                await registration.unregister();
-              }
+              await registration.unregister();
             })
           );
         }
 
         if ('caches' in window) {
           const cacheNames = await caches.keys();
-
-          await Promise.all(
-            cacheNames
-              .filter((name) => name !== 'tapcarta-cache-v1-1-5')
-              .map((name) => caches.delete(name))
-          );
+          await Promise.all(cacheNames.map((name) => caches.delete(name)));
         }
       } catch (err) {
         console.error('Cleanup error:', err);
