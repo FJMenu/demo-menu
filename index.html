@@ -73,12 +73,9 @@
       min-height: 100vh;
       background: #0F0F0F;
       overflow-x: hidden;
-      overflow-y: auto;
       -webkit-overflow-scrolling: touch;
-      overscroll-behavior-y: contain;
       -webkit-tap-highlight-color: transparent;
       box-sizing: border-box;
-      touch-action: manipulation;
     }
 
     * {
@@ -89,11 +86,6 @@
       max-width: 100%;
       height: auto;
       display: block;
-    }
-
-    button,
-    a {
-      touch-action: manipulation;
     }
 
     .font-display { font-family: 'Playfair Display', Georgia, serif; }
@@ -125,6 +117,7 @@
       -webkit-user-select: none;
       user-select: none;
       -webkit-touch-callout: none;
+      touch-action: manipulation;
     }
 
     .btn-action:active {
@@ -169,14 +162,13 @@
       display: flex;
       gap: 8px;
       z-index: 50;
-      background: rgba(26, 26, 26, 0.90);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      background: rgba(26, 26, 26, 0.92);
       padding: 10px 12px;
       border-radius: 12px;
       border: 1px solid rgba(242, 199, 68, 0.30);
       max-width: calc(100vw - 24px);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+      pointer-events: none;
     }
 
     .lang-btn {
@@ -202,6 +194,8 @@
       -webkit-user-select: none;
       user-select: none;
       flex-shrink: 0;
+      pointer-events: auto;
+      touch-action: manipulation;
     }
 
     .lang-btn:hover {
@@ -227,6 +221,12 @@
       font-weight: 700;
       letter-spacing: 0.04em;
       text-transform: uppercase;
+    }
+
+    .lang-flag {
+      display: none;
+      font-size: 22px;
+      line-height: 1;
     }
 
     .menu-item-subtitle {
@@ -276,13 +276,21 @@
         right: 10px;
         left: 10px;
         justify-content: center;
+        padding: 8px 10px;
       }
 
       .lang-btn {
         min-width: 44px;
         height: 42px;
         padding: 0 8px;
-        font-size: 13px;
+      }
+
+      .lang-label {
+        display: none;
+      }
+
+      .lang-flag {
+        display: inline-block;
       }
 
       .brand-card {
@@ -296,10 +304,22 @@
 
 <body class="font-body">
   <div class="language-selector">
-    <button class="lang-btn" data-lang="fr" title="Français" aria-label="Français"><span class="lang-label">FR</span></button>
-    <button class="lang-btn" data-lang="es" title="Español" aria-label="Español"><span class="lang-label">ES</span></button>
-    <button class="lang-btn" data-lang="en" title="English" aria-label="English"><span class="lang-label">GB</span></button>
-    <button class="lang-btn" data-lang="nl" title="Nederlands" aria-label="Nederlands"><span class="lang-label">NL</span></button>
+    <button class="lang-btn" data-lang="fr" title="Français" aria-label="Français">
+      <span class="lang-label">FR</span>
+      <span class="lang-flag">🇫🇷</span>
+    </button>
+    <button class="lang-btn" data-lang="es" title="Español" aria-label="Español">
+      <span class="lang-label">ES</span>
+      <span class="lang-flag">🇪🇸</span>
+    </button>
+    <button class="lang-btn" data-lang="en" title="English" aria-label="English">
+      <span class="lang-label">GB</span>
+      <span class="lang-flag">🇬🇧</span>
+    </button>
+    <button class="lang-btn" data-lang="nl" title="Nederlands" aria-label="Nederlands">
+      <span class="lang-label">NL</span>
+      <span class="lang-flag">🇳🇱</span>
+    </button>
   </div>
 
   <div id="app-wrapper" class="w-full min-h-screen bg-dark text-cream">
