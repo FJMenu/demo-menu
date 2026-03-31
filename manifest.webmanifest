@@ -1,11 +1,12 @@
 {
   "name": "La Bonne Fourchette",
   "short_name": "Bonne Fourchette",
-  "start_url": "./index.html?v=1.1.2",
+  "start_url": "./index.html?v=1.1.3",
   "scope": "./",
   "display": "standalone",
   "background_color": "#0F0F0F",
   "theme_color": "#0F0F0F",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "./icon-192.png",
