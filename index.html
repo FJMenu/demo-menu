@@ -330,6 +330,40 @@
       font-weight: 600;
     }
 
+    .desktop-story-wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .desktop-story-card {
+      background:
+        radial-gradient(circle at top left, rgba(242,199,68,.08), transparent 35%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border: 1px solid rgba(242,199,68,.18);
+      box-shadow: 0 22px 60px rgba(0,0,0,.32);
+    }
+
+    .desktop-story-image {
+      min-height: 420px;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+
+    .desktop-story-kicker {
+      color: rgba(242,199,68,.92);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-size: .78rem;
+      font-weight: 700;
+    }
+
+    .desktop-story-text {
+      color: rgba(250,246,238,.82);
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
     @media (max-width: 640px) {
       .language-selector {
         top: 10px;
@@ -425,7 +459,8 @@
       brandLogoUrl: "https://i.postimg.cc/sX7n1G14/Chat-GPT-Image-14-fevr-2026-15-23-38.png",
       productName: "TapCarta",
       productSignature: "Created by FJ",
-      reviewUrl: "https://search.google.com/local/writereview?placeid=ChIJ3b0pGDb7wEcRs2VnXGk2mmE"
+      reviewUrl: "https://search.google.com/local/writereview?placeid=ChIJ3b0pGDb7wEcRs2VnXGk2mmE",
+      desktopCollageUrl: "liege-collage.jpg"
     };
 
     const menuData = {
@@ -531,6 +566,11 @@
         installToastTitle: 'Menu ajouté au téléphone',
         installToastText: 'Retrouvez-le dans vos applications.',
         versionLabel: 'Version',
+        storyKicker: 'Présentation du restaurant',
+        storyTitle: 'Une table belge chaleureuse au cœur de Liège',
+        storyP1: 'La Bonne Fourchette met à l’honneur la tradition belge dans un cadre convivial et élégant. L’idée est simple : proposer une cuisine généreuse, rassurante et authentique, dans l’esprit des belles tables de Liège.',
+        storyP2: 'On y retrouve les grands classiques que l’on aime vraiment retrouver : carbonnade flamande mijotée à la bière, boulets liégeois, moules marinières, croquettes, desserts généreux et frites croustillantes cuites dans la graisse de bœuf selon la tradition.',
+        storyP3: 'Que ce soit pour un déjeuner gourmand, un dîner détendu ou une vraie découverte de la cuisine belge, La Bonne Fourchette invite à prendre le temps, bien manger et profiter d’une ambiance chaleureuse.',
         allergens: ['Gluten', 'Crustacés', 'Œufs', 'Poisson', 'Lait / lactose', 'Fruits à coque', 'Céleri', 'Moutarde', 'Sésame', 'Sulfites', 'Mollusques'],
         items: {
           ailes_poulet: { name: 'Ailes de poulet', subtitle: 'croustillantes et moelleuses' },
@@ -618,6 +658,11 @@
         installToastTitle: 'Menú añadido al teléfono',
         installToastText: 'Ya puede encontrarlo en sus aplicaciones.',
         versionLabel: 'Versión',
+        storyKicker: 'Presentación del restaurante',
+        storyTitle: 'Una mesa belga acogedora en el corazón de Lieja',
+        storyP1: 'La Bonne Fourchette pone en valor la tradición belga en un entorno acogedor y elegante. La idea es simple: ofrecer una cocina generosa, auténtica y reconfortante, con el espíritu de las buenas mesas de Lieja.',
+        storyP2: 'Aquí se encuentran los grandes clásicos que de verdad apetece volver a probar: carbonnade flamande cocinada con cerveza, boulets liégeois, mejillones marinière, croquetas, postres generosos y patatas fritas crujientes cocinadas en grasa de ternera según la tradición.',
+        storyP3: 'Ya sea para un almuerzo sabroso, una cena relajada o un descubrimiento real de la gastronomía belga, La Bonne Fourchette invita a disfrutar del momento en un ambiente cálido y elegante.',
         allergens: ['Gluten', 'Crustáceos', 'Huevos', 'Pescado', 'Leche / lactosa', 'Frutos secos', 'Apio', 'Mostaza', 'Sésamo', 'Sulfitos', 'Moluscos'],
         items: {
           ailes_poulet: { name: 'Alitas de pollo', subtitle: 'crujientes y tiernas' },
@@ -705,6 +750,11 @@
         installToastTitle: 'Menu added to your phone',
         installToastText: 'You can now find it in your apps.',
         versionLabel: 'Version',
+        storyKicker: 'Restaurant presentation',
+        storyTitle: 'A warm Belgian table in the heart of Liège',
+        storyP1: 'La Bonne Fourchette celebrates Belgian tradition in an elegant and welcoming setting. The idea is simple: serve generous, authentic and comforting cuisine in the spirit of the great tables of Liège.',
+        storyP2: 'You will find the classics people truly love to come back for: beer-braised carbonnade flamande, boulets liégeois, mussels marinière, croquettes, generous desserts and crispy fries cooked in beef fat according to tradition.',
+        storyP3: 'Whether for a hearty lunch, a relaxed dinner or a true discovery of Belgian cuisine, La Bonne Fourchette invites guests to slow down, eat well and enjoy a warm atmosphere.',
         allergens: ['Gluten', 'Crustaceans', 'Eggs', 'Fish', 'Milk / lactose', 'Nuts', 'Celery', 'Mustard', 'Sesame', 'Sulfites', 'Molluscs'],
         items: {
           ailes_poulet: { name: 'Chicken wings', subtitle: 'crispy and tender' },
@@ -792,6 +842,11 @@
         installToastTitle: 'Menu toegevoegd aan uw telefoon',
         installToastText: 'U vindt het nu terug bij uw apps.',
         versionLabel: 'Versie',
+        storyKicker: 'Restaurantpresentatie',
+        storyTitle: 'Een warme Belgische tafel in het hart van Luik',
+        storyP1: 'La Bonne Fourchette zet de Belgische traditie in de kijker in een elegant en gezellig kader. Het idee is eenvoudig: royale, authentieke en troostrijke keuken aanbieden in de geest van de mooie tafels van Luik.',
+        storyP2: 'Hier vindt men de klassiekers waar men echt voor terugkomt: carbonnade flamande met bier, boulets liégeois, mosselen marinière, kroketten, royale desserts en krokante frieten gebakken in rundvet volgens de traditie.',
+        storyP3: 'Of het nu gaat om een smakelijke lunch, een ontspannen diner of een echte ontdekking van de Belgische keuken, La Bonne Fourchette nodigt uit om de tijd te nemen, goed te eten en te genieten van een warme sfeer.',
         allergens: ['Gluten', 'Schaaldieren', 'Eieren', 'Vis', 'Melk / lactose', 'Noten', 'Selderij', 'Mosterd', 'Sesam', 'Sulfieten', 'Weekdieren'],
         items: {
           ailes_poulet: { name: 'Kipvleugels', subtitle: 'knapperig en mals' },
@@ -1158,6 +1213,39 @@
       `;
     }
 
+    function renderDesktopStorySection(t) {
+      return `
+        <section class="hidden lg:block px-6 pt-2 pb-10 animate-fade-up delay-1">
+          <div class="desktop-story-wrap">
+            <div class="desktop-story-card rounded-[28px] overflow-hidden">
+              <div class="grid lg:grid-cols-[1.05fr_.95fr] items-stretch">
+                <div class="p-10 xl:p-14">
+                  <div class="desktop-story-kicker mb-4">${t.storyKicker}</div>
+                  <h2 class="font-display text-4xl xl:text-5xl leading-tight text-gold mb-7">
+                    ${t.storyTitle}
+                  </h2>
+
+                  <p class="desktop-story-text mb-5">${t.storyP1}</p>
+                  <p class="desktop-story-text mb-5">${t.storyP2}</p>
+                  <p class="desktop-story-text">${t.storyP3}</p>
+                </div>
+
+                <div class="relative min-h-full">
+                  <img
+                    src="${siteConfig.desktopCollageUrl}"
+                    alt="La Bonne Fourchette"
+                    class="desktop-story-image"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
     function renderMenu() {
       const t = translations[currentLang];
       const wrapper = document.getElementById('app-wrapper');
@@ -1186,6 +1274,8 @@
             }
           </div>
         </header>
+
+        ${renderDesktopStorySection(t)}
 
         <div class="diamond-divider">
           <span></span><span></span><span></span>
