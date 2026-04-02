@@ -6,7 +6,7 @@
   <title>La Bonne Fourchette</title>
 
   <script>
-    const APP_VERSION = '1.2.1';
+    const APP_VERSION = '1.2.2';
 
     function getBasePath() {
       const path = window.location.pathname;
@@ -143,6 +143,10 @@
     .diamond-divider span:nth-child(2) {
       width: 8px;
       height: 8px;
+    }
+
+    .desktop-lux-divider {
+      display: none;
     }
 
     .menu-item-row {
@@ -331,16 +335,16 @@
     }
 
     .desktop-story-wrap {
-      max-width: 1220px;
+      max-width: 1240px;
       margin: 0 auto;
     }
 
     .desktop-story-card {
       background:
-        radial-gradient(circle at top left, rgba(242,199,68,.10), transparent 35%),
-        linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
-      border: 1px solid rgba(242,199,68,.18);
-      box-shadow: 0 24px 70px rgba(0,0,0,.34);
+        radial-gradient(circle at top left, rgba(242,199,68,.12), transparent 35%),
+        linear-gradient(180deg, rgba(255,255,255,.038), rgba(255,255,255,.015));
+      border: 1px solid rgba(242,199,68,.20);
+      box-shadow: 0 28px 74px rgba(0,0,0,.36);
       backdrop-filter: blur(2px);
     }
 
@@ -352,25 +356,25 @@
     }
 
     .desktop-story-image {
-      min-height: 460px;
+      min-height: 470px;
       object-fit: cover;
       width: 100%;
       height: 100%;
-      transform: scale(1.01);
+      transform: scale(1.015);
     }
 
     .desktop-story-image-overlay {
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(15,15,15,.18) 0%, rgba(15,15,15,.06) 28%, rgba(15,15,15,.22) 100%),
-        linear-gradient(180deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.18) 100%);
+        linear-gradient(90deg, rgba(15,15,15,.24) 0%, rgba(15,15,15,.10) 30%, rgba(15,15,15,.28) 100%),
+        linear-gradient(180deg, rgba(0,0,0,.07) 0%, rgba(0,0,0,.24) 100%);
       pointer-events: none;
     }
 
     .desktop-story-kicker {
       color: rgba(242,199,68,.92);
-      letter-spacing: .18em;
+      letter-spacing: .20em;
       text-transform: uppercase;
       font-size: .78rem;
       font-weight: 700;
@@ -386,18 +390,18 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      margin-top: 2px;
-      margin-bottom: 22px;
-      color: rgba(250,246,238,.62);
-      font-size: .92rem;
-      letter-spacing: .02em;
+      margin-top: 0;
+      margin-bottom: 24px;
+      color: rgba(250,246,238,.52);
+      font-size: .86rem;
+      letter-spacing: .03em;
     }
 
     .desktop-story-signature::before {
       content: "";
       width: 34px;
       height: 1px;
-      background: rgba(242,199,68,.45);
+      background: rgba(242,199,68,.30);
       display: inline-block;
     }
 
@@ -406,14 +410,14 @@
       align-items: center;
       justify-content: center;
       gap: 12px;
-      padding: 13px 22px;
+      padding: 14px 24px;
       border-radius: 14px;
-      border: 2px solid rgba(242,199,68,.55);
-      background: linear-gradient(180deg, rgba(242,199,68,.16), rgba(242,199,68,.08));
+      border: 2px solid rgba(242,199,68,.72);
+      background: linear-gradient(180deg, rgba(242,199,68,.24), rgba(242,199,68,.12));
       color: #FAF6EE;
       font-weight: 700;
       letter-spacing: .03em;
-      box-shadow: 0 14px 28px rgba(0,0,0,.20);
+      box-shadow: 0 16px 30px rgba(0,0,0,.24), 0 0 0 1px rgba(242,199,68,.12) inset;
       transition: transform .15s ease-out, border-color .15s ease-out, background .15s ease-out, box-shadow .15s ease-out;
       user-select: none;
       -webkit-user-select: none;
@@ -421,13 +425,48 @@
 
     .desktop-story-cta:hover {
       border-color: #F2C744;
-      background: linear-gradient(180deg, rgba(242,199,68,.22), rgba(242,199,68,.10));
-      box-shadow: 0 18px 34px rgba(0,0,0,.24), 0 0 0 1px rgba(242,199,68,.08) inset;
+      background: linear-gradient(180deg, rgba(242,199,68,.30), rgba(242,199,68,.16));
+      box-shadow: 0 20px 36px rgba(0,0,0,.28), 0 0 0 1px rgba(242,199,68,.18) inset;
       transform: translateY(-1px);
     }
 
     .desktop-story-cta:active {
       transform: scale(0.98);
+    }
+
+    @media (min-width: 1024px) {
+      .desktop-lux-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        padding: 10px 0 18px;
+      }
+
+      .desktop-lux-divider-line {
+        width: 120px;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(242,199,68,0), rgba(242,199,68,.45), rgba(242,199,68,0));
+      }
+
+      .desktop-lux-divider-dots {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .desktop-lux-divider-dots span {
+        width: 6px;
+        height: 6px;
+        background: rgba(242,199,68,.9);
+        transform: rotate(45deg);
+        display: inline-block;
+      }
+
+      .desktop-lux-divider-dots span:nth-child(2) {
+        width: 8px;
+        height: 8px;
+      }
     }
 
     @media (max-width: 640px) {
@@ -1296,14 +1335,14 @@
 
     function renderDesktopStorySection(t) {
       return `
-        <section class="hidden lg:block px-6 pt-3 pb-12 animate-fade-up delay-1">
+        <section class="hidden lg:block px-6 pt-3 pb-10 animate-fade-up delay-1">
           <div class="desktop-story-wrap">
             <div class="desktop-story-card rounded-[30px] overflow-hidden">
               <div class="grid lg:grid-cols-[1.02fr_.98fr] items-stretch">
                 <div class="p-12 xl:p-16 2xl:p-[4.5rem]">
                   <div class="desktop-story-kicker mb-4">${t.storyKicker}</div>
 
-                  <h2 class="font-display text-[2.7rem] xl:text-[3.15rem] leading-[1.08] text-gold mb-3 max-w-[12ch]">
+                  <h2 class="font-display text-[3.05rem] xl:text-[3.55rem] leading-[1.03] text-gold mb-3 max-w-[12ch]">
                     ${t.storyTitle}
                   </h2>
 
@@ -1370,7 +1409,13 @@
 
         ${renderDesktopStorySection(t)}
 
-        <div class="diamond-divider">
+        <div class="desktop-lux-divider">
+          <div class="desktop-lux-divider-line"></div>
+          <div class="desktop-lux-divider-dots"><span></span><span></span><span></span></div>
+          <div class="desktop-lux-divider-line"></div>
+        </div>
+
+        <div class="diamond-divider lg:hidden">
           <span></span><span></span><span></span>
         </div>
 
