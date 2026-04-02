@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tapcarta-cache-v1-1-6';
+const CACHE_NAME = 'tapcarta-cache-v1-2-1';
 const APP_SHELL = [
   './',
   './index.html',
@@ -8,10 +8,10 @@ const APP_SHELL = [
 ];
 
 self.addEventListener('install', (event) => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_SHELL))
   );
-  self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
@@ -31,13 +31,25 @@ self.addEventListener('fetch', (event) => {
 
   if (request.method !== 'GET') return;
 
-  if (request.mode === 'navigate') {
+  // Navigation / page HTML : priorité réseau + mise à jour du cache
+  if (request.mode === 'navigate' || request.destination === 'document') {
     event.respondWith(
-      fetch(request).catch(() => caches.match('./index.html'))
+      fetch(request)
+        .then((response) => {
+          if (response && response.status === 200) {
+            const responseClone = response.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put('./index.html', responseClone);
+            });
+          }
+          return response;
+        })
+        .catch(() => caches.match('./index.html'))
     );
     return;
   }
 
+  // Assets : cache d'abord, puis réseau
   event.respondWith(
     caches.match(request).then((cached) => {
       if (cached) return cached;
