@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tapcarta-cache-v1-2-3';
+const CACHE_NAME = 'tapcarta-cache-v1-2-4';
 const APP_SHELL = [
   './',
   './index.html',
@@ -49,12 +49,10 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Assets : cache d'abord, puis réseau
+  // Assets : priorité réseau + fallback cache
   event.respondWith(
-    caches.match(request).then((cached) => {
-      if (cached) return cached;
-
-      return fetch(request).then((response) => {
+    fetch(request)
+      .then((response) => {
         if (!response || response.status !== 200 || response.type === 'opaque') {
           return response;
         }
@@ -65,7 +63,7 @@ self.addEventListener('fetch', (event) => {
         });
 
         return response;
-      });
-    })
+      })
+      .catch(() => caches.match(request))
   );
 });
