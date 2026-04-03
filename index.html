@@ -6,7 +6,7 @@
   <title>La Bonne Fourchette</title>
 
   <script>
-    const APP_VERSION = '1.2.4';
+    const APP_VERSION = '1.2.5';
 
     function getBasePath() {
       const path = window.location.pathname;
@@ -1799,40 +1799,51 @@
               <div class="w-8 h-0.5 rounded-full" style="background:#EF3340;"></div>
             </div>
 
-            <div class="pt-5 flex justify-center">
-              <div class="brand-card flex items-center gap-4 px-5 py-4 rounded-2xl bg-white/5 border-2 border-gold/40 shadow-lg">
-                <div class="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-2 border-gold/30 bg-white">
-                  <img
-                    src="${siteConfig.brandLogoUrl}"
-                    alt="FJ"
-                    class="w-full h-full object-contain"
-                    loading="lazy"
-                    decoding="async"
-                  >
-                </div>
+        <div class="pt-5 flex justify-center">
+  <a
+    href="https://tapcarta.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="brand-card flex items-center gap-4 px-5 py-4 rounded-2xl bg-white/5 border-2 border-gold/40 shadow-lg hover:bg-white/10 hover:border-gold/60 transition-all duration-300 cursor-pointer"
+    title="Découvrir TapCarta"
+    aria-label="Découvrir TapCarta"
+  >
+    <div class="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-2 border-gold/30 bg-white">
+      <img
+        src="${siteConfig.brandLogoUrl}"
+        alt="FJ"
+        class="w-full h-full object-contain"
+        loading="lazy"
+        decoding="async"
+      >
+    </div>
 
-                <div class="leading-tight text-left min-w-0">
-                  <div class="text-base font-semibold text-cream tracking-wide break-words">
-                    ${siteConfig.productName}
-                  </div>
+    <div class="leading-tight text-left min-w-0">
+      <div class="text-base font-semibold text-cream tracking-wide break-words">
+        ${siteConfig.productName}
+      </div>
 
-                  <div class="text-sm text-gold/80 mt-1 break-words">
-                    ${siteConfig.productSignature}
-                  </div>
+      <div class="text-sm text-gold/80 mt-1 break-words">
+        ${siteConfig.productSignature}
+      </div>
 
-                  <div class="text-xs text-cream/40 mt-2">
-                    ${t.versionLabel} ${APP_VERSION}
-                  </div>
-                </div>
-              </div>
-            </div>
+      <div class="text-xs text-cream/60 mt-2">
+        Cliquez pour découvrir TapCarta
+      </div>
+
+      <div class="text-xs text-cream/40 mt-2">
+        ${t.versionLabel} ${APP_VERSION}
+      </div>
+    </div>
+  </a>
+</div>
 
             <p class="text-xs text-cream/30 mt-4">${t.copyright}</p>
           </div>
         </footer>
       `;
 
-      const toastTitle = document.getElementById('install-toast-title');
+      const toastTitle = document.getElementById('install-toast-title');  
       const toastText = document.getElementById('install-toast-text');
       const iosHelp = document.getElementById('ios-install-help');
 
