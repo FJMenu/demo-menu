@@ -1,7 +1,5 @@
-const CACHE_NAME = 'tapcarta-cache-v1-2-8';
+const CACHE_NAME = 'tapcarta-cache-v1-2-9';
 const APP_SHELL = [
-  './',
-  './index.html',
   './manifest.webmanifest',
   './icon-192.png',
   './icon-512.png'
@@ -32,19 +30,10 @@ self.addEventListener('fetch', (event) => {
   if (request.method !== 'GET') return;
 
   // Navigation / page HTML : priorité réseau + mise à jour du cache
-  if (request.mode === 'navigate' || request.destination === 'document') {
+   if (request.mode === 'navigate' || request.destination === 'document') {
     event.respondWith(
-      fetch(request)
-        .then((response) => {
-          if (response && response.status === 200) {
-            const responseClone = response.clone();
-            caches.open(CACHE_NAME).then((cache) => {
-              cache.put('./index.html', responseClone);
-            });
-          }
-          return response;
-        })
-        .catch(() => caches.match('./index.html'))
+      fetch(request, { cache: 'no-store' })
+        .catch(() => fetch('./', { cache: 'no-store' }))
     );
     return;
   }

@@ -6,7 +6,7 @@
   <title>La Bonne Fourchette</title>
 
   <script>
-    const APP_VERSION = '1.2.8';
+    const APP_VERSION = '1.2.9';
 
     function getBasePath() {
       const path = window.location.pathname;
@@ -1121,12 +1121,15 @@
       return supportedLangs.includes(browserLang) ? browserLang : 'es';
     }
 
-    let currentLang = detectLanguage();
-    let deferredInstallPrompt = null;
-    let installToastTimeout = null;
-    let installFallbackTimeout = null;
-    let installToastAlreadyShown = false;
-    let installHelpTimeout = null;
+let currentLang = detectLanguage();
+let deferredInstallPrompt = null;
+let installToastTimeout = null;
+let installFallbackTimeout = null;
+let installToastAlreadyShown = false;
+let installHelpTimeout = null;
+
+const VERSION_STORAGE_KEY = 'tapcarta-last-loaded-version';
+const VERSION_RELOAD_FLAG_KEY = 'tapcarta-version-reload-done';
 
     function isIos() {
       return /iphone|ipad|ipod/i.test(window.navigator.userAgent);
@@ -1870,13 +1873,33 @@
       updateLangButtons();
     }
 
-    async function cleanupOldServiceWorkersAndCaches() {
-      // Désactivé volontairement :
-      // on ne supprime plus les service workers et caches à chaque chargement,
-      // pour garder une installation PWA stable sur Chrome.
-    }
+ function ensureFreshHtmlVersion() {
+  try {
+    const lastLoadedVersion = localStorage.getItem(VERSION_STORAGE_KEY);
+    const reloadDoneForVersion = sessionStorage.getItem(VERSION_RELOAD_FLAG_KEY);
+    const currentUrl = new URL(window.location.href);
+    const urlVersion = currentUrl.searchParams.get('v');
 
- let hasReloadedForNewSW = false;
+    if (lastLoadedVersion !== APP_VERSION) {
+      localStorage.setItem(VERSION_STORAGE_KEY, APP_VERSION);
+
+      if (reloadDoneForVersion !== APP_VERSION || urlVersion !== APP_VERSION) {
+        sessionStorage.setItem(VERSION_RELOAD_FLAG_KEY, APP_VERSION);
+        currentUrl.searchParams.set('v', APP_VERSION);
+        window.location.replace(currentUrl.toString());
+        return true;
+      }
+    } else if (reloadDoneForVersion && reloadDoneForVersion !== APP_VERSION) {
+      sessionStorage.removeItem(VERSION_RELOAD_FLAG_KEY);
+    }
+  } catch (err) {
+    console.warn('Version refresh check failed:', err);
+  }
+
+  return false;
+}
+
+let hasReloadedForNewSW = false;
 
 async function registerFreshServiceWorker() {
   if (!('serviceWorker' in navigator)) return;
@@ -1917,6 +1940,9 @@ async function registerFreshServiceWorker() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+  const reloadingForFreshVersion = ensureFreshHtmlVersion();
+  if (reloadingForFreshVersion) return;
+
   await registerFreshServiceWorker();
 
   renderMenu();
