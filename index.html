@@ -6,7 +6,7 @@
   <title>La Bonne Fourchette</title>
 
   <script>
-    const APP_VERSION = '1.2.7';
+    const APP_VERSION = '1.2.8';
 
     function getBasePath() {
       const path = window.location.pathname;
@@ -1876,7 +1876,7 @@
       // pour garder une installation PWA stable sur Chrome.
     }
 
-    let hasReloadedForNewSW = false;
+ let hasReloadedForNewSW = false;
 
 async function registerFreshServiceWorker() {
   if (!('serviceWorker' in navigator)) return;
@@ -1895,6 +1895,21 @@ async function registerFreshServiceWorker() {
 
     if (registration) {
       await registration.update();
+
+      if (registration.waiting) {
+        registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+      }
+
+      registration.addEventListener('updatefound', () => {
+        const newWorker = registration.installing;
+        if (!newWorker) return;
+
+        newWorker.addEventListener('statechange', () => {
+          if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+            newWorker.postMessage({ type: 'SKIP_WAITING' });
+          }
+        });
+      });
     }
   } catch (err) {
     console.error('SW registration error:', err);

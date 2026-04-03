@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tapcarta-cache-v1-2-7';
+const CACHE_NAME = 'tapcarta-cache-v1-2-8';
 const APP_SHELL = [
   './',
   './index.html',
@@ -66,4 +66,9 @@ self.addEventListener('fetch', (event) => {
       })
       .catch(() => caches.match(request))
   );
+});
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
 });
