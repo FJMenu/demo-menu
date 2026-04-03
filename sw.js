@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tapcarta-cache-v1-2-9';
+const CACHE_NAME = 'tapcarta-cache-v1-2-10';
 const APP_SHELL = [
   './manifest.webmanifest',
   './icon-192.png',
